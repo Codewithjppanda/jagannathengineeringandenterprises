@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body class="font-inter bg-white text-slate-900" x-data="{ mobileMenuOpen: false }">
@@ -32,18 +32,18 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
-                    <a href="/" class="text-xl font-bold text-slate-900 hover:text-sky-600 transition-colors">
+                    <a href="./index.html" class="text-xl font-bold text-slate-900 hover:text-sky-600 transition-colors">
                         Jagannath Engineering & Equipment
                     </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="/" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <a href="/about.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="/services.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
-                        <a href="/projects.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
-                        <a href="/certifications.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Certifications</a>
-                        <a href="/contact.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" aria-current="page">Contact</a>
+                        <a href="./index.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="./about.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="./services.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+                        <a href="./projects.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="./certifications.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Certifications</a>
+                        <a href="./contact.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" aria-current="page">Contact</a>
                         <a href="#quote" class="bg-sky-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-sky-700 transition-colors ml-4">Get Quote</a>
                     </div>
                 </div>
@@ -121,10 +121,14 @@
                     <div class="text-center mb-12">
                         <h2 class="text-3xl font-bold font-jakarta mb-4">Request a Quote</h2>
                         <p class="text-slate-600">Fill out the form below and we'll get back to you within 24 hours</p>
+                        
+                        <!-- Success Message -->
+                        <div id="successMessage" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                            <strong>Thank you!</strong> Your quote request has been submitted successfully. We'll get back to you within 24 hours.
+                        </div>
                     </div>
                     
-                    <form id="contactForm" action="https://formspree.io/f/xxxxdemo" method="POST" class="bg-white p-8 rounded-xl shadow-lg">
-                        <!-- Replace xxxxdemo with actual Formspree endpoint -->
+                    <form id="contactForm" action="https://formspree.io/f/xldwodgd" method="POST" class="bg-white p-8 rounded-xl shadow-lg">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="form-field">
                                 <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
@@ -174,6 +178,15 @@
                         
                         <p class="mt-4 text-sm text-slate-500 text-center">We don't share your data. Your privacy is important to us.</p>
                     </form>
+                    
+                    <script>
+                        // Show success message if redirected from Formspree
+                        const urlParams = new URLSearchParams(window.location.search);
+                        if (urlParams.get('success') === 'true') {
+                            document.getElementById('successMessage').classList.remove('hidden');
+                            document.getElementById('contactForm').style.display = 'none';
+                        }
+                    </script>
                 </div>
             </div>
         </section>
