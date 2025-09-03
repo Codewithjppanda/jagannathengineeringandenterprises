@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Jagannath Engineering & Equipment</title>
+    <meta name="description" content="Explore our portfolio of successful engineering projects across civil, electrical, railway, and maintenance works in Odisha.">
+    <meta name="keywords" content="engineering projects, civil projects, electrical projects, railway projects, construction portfolio, Odisha, TATA Projects, PPEL">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Engineering Projects Portfolio - Jagannath Engineering & Equipment">
+    <meta property="og:description" content="Browse our successful project portfolio spanning multiple engineering disciplines across Odisha.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/projects/proj1.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'jakarta': ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body class="font-inter bg-white text-slate-900" x-data="{ mobileMenuOpen: false }">
+    <!-- Skip to content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 border-b border-slate-200">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-xl font-bold text-slate-900 hover:text-sky-600 transition-colors">
+                        Jagannath Engineering & Equipment
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="/about.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="/services.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+                        <a href="/projects.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" aria-current="page">Projects</a>
+                        <a href="/certifications.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Certifications</a>
+                        <a href="/contact.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                        <a href="/contact.html#quote" class="bg-sky-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-sky-700 transition-colors ml-4">
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" 
+                            class="text-slate-700 hover:text-sky-600 p-2" 
+                            :aria-expanded="mobileMenuOpen"
+                            aria-label="Toggle mobile menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 transform -translate-y-1"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 transform translate-y-0"
+                 x-transition:leave-end="opacity-0 transform -translate-y-1"
+                 class="md:hidden border-t border-slate-200 bg-white">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="/" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Home</a>
+                    <a href="/about.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">About</a>
+                    <a href="/services.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Services</a>
+                    <a href="/projects.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Projects</a>
+                    <a href="/certifications.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Certifications</a>
+                    <a href="/contact.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Contact</a>
+                    <a href="/contact.html#quote" class="block bg-sky-600 text-white px-3 py-3 rounded-lg text-base font-medium hover:bg-sky-700 transition-colors mt-4">
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="pt-16">
+        <!-- Hero Section -->
+        <section class="py-20 bg-gradient-to-r from-slate-900 to-slate-700 text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center" data-aos="fade-up">
+                    <h1 class="text-4xl sm:text-5xl font-bold font-jakarta mb-6">Our Projects</h1>
+                    <p class="text-xl text-slate-200 max-w-3xl mx-auto">
+                        Showcasing our expertise through successful project delivery across multiple engineering disciplines in Odisha.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Stats -->
+        <section class="py-16 bg-slate-50" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-sky-600 mb-2">50+</div>
+                        <div class="text-slate-600 font-medium">Total Projects</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-sky-600 mb-2">7</div>
+                        <div class="text-slate-600 font-medium">Service Categories</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-sky-600 mb-2">100%</div>
+                        <div class="text-slate-600 font-medium">On-Time Delivery</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-sky-600 mb-2">2</div>
+                        <div class="text-slate-600 font-medium">Major Partners</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Filters -->
+        <section class="py-8 bg-white sticky top-16 z-40 border-b border-slate-200" data-aos="fade-down">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="filterProjects('all')" class="filter-btn bg-sky-600 text-white px-6 py-2 rounded-lg font-medium transition-colors hover:bg-sky-700">
+                        All Projects
+                    </button>
+                    <button onclick="filterProjects('civil')" class="filter-btn bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium transition-colors hover:bg-gray-200">
+                        Civil
+                    </button>
+                    <button onclick="filterProjects('maintenance')" class="filter-btn bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium transition-colors hover:bg-gray-200">
+                        Maintenance
+                    </button>
+                    <button onclick="filterProjects('electrical')" class="filter-btn bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium transition-colors hover:bg-gray-200">
+                        Electrical
+                    </button>
+                    <button onclick="filterProjects('railway')" class="filter-btn bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium transition-colors hover:bg-gray-200">
+                        Railway
+                    </button>
+                    <button onclick="filterProjects('mechanical')" class="filter-btn bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium transition-colors hover:bg-gray-200">
+                        Mechanical
+                    </button>
+                    <button onclick="filterProjects('equipment')" class="filter-btn bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium transition-colors hover:bg-gray-200">
+                        Equipment Supply
+                    </button>
+                    <button onclick="filterProjects('medical')" class="filter-btn bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-medium transition-colors hover:bg-gray-200">
+                        Medical Supply
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Gallery -->
+        <section class="py-20" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+                    
+                    <!-- Project 1 - Civil -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="civil" data-aos="fade-up">
+                        <a href="/public/images/projects/proj1.jpg" class="glightbox" data-gallery="projects" data-title="Bridge Repair Project, Bhadrak" data-description="Complete structural rehabilitation of highway bridge including foundation strengthening and deck replacement.">
+                            <img src="/public/images/projects/proj1.jpg" alt="Bridge Repair Project in Bhadrak showing concrete bridge construction" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Civil</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Bridge Repair, Bhadrak</h3>
+                            <p class="text-slate-600 mb-3">Complete structural rehabilitation of highway bridge including foundation strengthening and deck replacement.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: TATA Projects Limited</p>
+                                <p>Duration: 6 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 - Maintenance -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="maintenance" data-aos="fade-up" data-aos-delay="100">
+                        <a href="/public/images/projects/proj2.jpg" class="glightbox" data-gallery="projects" data-title="Commercial Building Maintenance" data-description="Comprehensive facade repair and maintenance work for multi-story commercial complex.">
+                            <img src="/public/images/projects/proj2.jpg" alt="Commercial building maintenance project showing workers on scaffolding" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-amber-100 text-amber-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Maintenance</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Commercial Building Maintenance</h3>
+                            <p class="text-slate-600 mb-3">Comprehensive facade repair and maintenance work for multi-story commercial complex with weatherproofing.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Private Developer</p>
+                                <p>Duration: 3 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 - Electrical -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="electrical" data-aos="fade-up" data-aos-delay="200">
+                        <a href="/public/images/projects/proj3.jpg" class="glightbox" data-gallery="projects" data-title="Power Substation Construction" data-description="110kV substation electrical work and installation with complete power distribution setup.">
+                            <img src="/public/images/projects/proj3.jpg" alt="Electrical substation construction project with power lines and transformers" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Electrical</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Power Substation Construction</h3>
+                            <p class="text-slate-600 mb-3">110kV substation electrical work and installation with complete power distribution setup and safety systems.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: PPEL</p>
+                                <p>Duration: 8 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 - Railway -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="railway" data-aos="fade-up" data-aos-delay="300">
+                        <a href="/public/images/projects/proj4.jpg" class="glightbox" data-gallery="projects" data-title="Railway Track Laying Project" data-description="New track construction for freight corridor with complete signaling and safety installations.">
+                            <img src="/public/images/projects/proj4.jpg" alt="Railway track laying project showing track construction work" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Railway</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Railway Track Laying</h3>
+                            <p class="text-slate-600 mb-3">New track construction for freight corridor with complete signaling and safety installations over 5km stretch.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Indian Railways</p>
+                                <p>Duration: 12 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 - Mechanical -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="mechanical" data-aos="fade-up" data-aos-delay="400">
+                        <a href="/public/images/projects/proj5.jpg" class="glightbox" data-gallery="projects" data-title="Industrial Equipment Installation" data-description="Heavy machinery installation and commissioning for manufacturing facility.">
+                            <img src="/public/images/projects/proj5.jpg" alt="Industrial mechanical equipment installation in factory setting" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Mechanical</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Industrial Equipment Setup</h3>
+                            <p class="text-slate-600 mb-3">Heavy machinery installation and commissioning for manufacturing facility via our partner SBM Infra Projects.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Manufacturing Plant</p>
+                                <p>Duration: 4 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 - Equipment -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="equipment" data-aos="fade-up" data-aos-delay="500">
+                        <a href="/public/images/projects/proj6.jpg" class="glightbox" data-gallery="projects" data-title="Construction Equipment Supply" data-description="Supply of excavators and construction machinery for major infrastructure project.">
+                            <img src="/public/images/projects/proj6.jpg" alt="Construction equipment supply showing excavators and cranes" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Equipment</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Construction Equipment Supply</h3>
+                            <p class="text-slate-600 mb-3">Supply of excavators and construction machinery for major infrastructure project including maintenance support.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Construction Company</p>
+                                <p>Duration: Ongoing</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7 - Medical -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="medical" data-aos="fade-up" data-aos-delay="600">
+                        <a href="/public/images/projects/proj7.jpg" class="glightbox" data-gallery="projects" data-title="Medical Equipment Installation" data-description="Hospital equipment installation and setup for healthcare facility.">
+                            <img src="/public/images/projects/proj7.jpg" alt="Medical equipment installation project in healthcare facility" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Medical Supply</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Medical Equipment Installation</h3>
+                            <p class="text-slate-600 mb-3">Hospital equipment installation and setup for healthcare facility through our specialized partner network.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Healthcare Provider</p>
+                                <p>Duration: 2 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 8 - Civil -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="civil" data-aos="fade-up" data-aos-delay="700">
+                        <a href="/public/images/projects/proj8.jpg" class="glightbox" data-gallery="projects" data-title="Road Construction Project" data-description="Asphalt laying and road infrastructure development project.">
+                            <img src="/public/images/projects/proj8.jpg" alt="Road construction project showing asphalt laying work" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Civil</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Road Construction Project</h3>
+                            <p class="text-slate-600 mb-3">Asphalt laying and road infrastructure development project including drainage and safety installations.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Government Authority</p>
+                                <p>Duration: 10 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Projects for demonstration -->
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="electrical" data-aos="fade-up" data-aos-delay="800">
+                        <a href="/public/images/projects/proj3.jpg" class="glightbox" data-gallery="projects" data-title="Industrial Electrical Installation" data-description="Complete electrical infrastructure for industrial complex.">
+                            <img src="/public/images/projects/proj3.jpg" alt="Industrial electrical installation project" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Electrical</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Industrial Electrical Installation</h3>
+                            <p class="text-slate-600 mb-3">Complete electrical infrastructure for industrial complex including power distribution and control systems.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Industrial Client</p>
+                                <p>Duration: 6 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="maintenance" data-aos="fade-up" data-aos-delay="900">
+                        <a href="/public/images/projects/proj2.jpg" class="glightbox" data-gallery="projects" data-title="Infrastructure Maintenance" data-description="Preventive maintenance for public infrastructure.">
+                            <img src="/public/images/projects/proj2.jpg" alt="Infrastructure maintenance project" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-amber-100 text-amber-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Maintenance</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Infrastructure Maintenance</h3>
+                            <p class="text-slate-600 mb-3">Preventive maintenance for public infrastructure including bridges, roads, and government buildings.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Public Works Department</p>
+                                <p>Duration: Ongoing Contract</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="civil" data-aos="fade-up" data-aos-delay="1000">
+                        <a href="/public/images/projects/proj1.jpg" class="glightbox" data-gallery="projects" data-title="Commercial Complex Construction" data-description="Multi-story commercial building construction project.">
+                            <img src="/public/images/projects/proj1.jpg" alt="Commercial complex construction project" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Civil</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Commercial Complex Construction</h3>
+                            <p class="text-slate-600 mb-3">Multi-story commercial building construction project with modern architectural design and safety features.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Real Estate Developer</p>
+                                <p>Duration: 18 months</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all" data-category="railway" data-aos="fade-up" data-aos-delay="1100">
+                        <a href="/public/images/projects/proj4.jpg" class="glightbox" data-gallery="projects" data-title="Railway Platform Modernization" data-description="Station platform upgrade and modernization project.">
+                            <img src="/public/images/projects/proj4.jpg" alt="Railway platform modernization project" class="w-full h-48 object-cover">
+                        </a>
+                        <div class="p-6">
+                            <span class="inline-block bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium mb-3">Railway</span>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Railway Platform Modernization</h3>
+                            <p class="text-slate-600 mb-3">Station platform upgrade and modernization project including accessibility features and safety improvements.</p>
+                            <div class="text-sm text-slate-500">
+                                <p>Client: Railway Station Authority</p>
+                                <p>Duration: 8 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Client Testimonials for Projects -->
+        <section class="py-20 bg-slate-50" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold font-jakarta text-slate-900 mb-4">Project Success Stories</h2>
+                    <p class="text-xl text-slate-600">What our clients say about our project delivery</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="mb-6">
+                            <div class="flex text-amber-400 mb-4">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-slate-600 mb-4">"The bridge repair project was completed ahead of schedule with exceptional quality. Their attention to safety and structural integrity was outstanding. We highly recommend their civil engineering services."</p>
+                        </div>
+                        <div class="text-sm">
+                            <p class="font-semibold text-slate-900">TATA Projects Limited</p>
+                            <p class="text-slate-500">Infrastructure Division</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="mb-6">
+                            <div class="flex text-amber-400 mb-4">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-slate-600 mb-4">"Professional electrical installation with strict adherence to safety standards. The substation project was delivered on time with comprehensive testing and documentation. Excellent technical expertise."</p>
+                        </div>
+                        <div class="text-sm">
+                            <p class="font-semibold text-slate-900">PPEL</p>
+                            <p class="text-slate-500">Project Management Team</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-sky-600 text-white" data-aos="fade-up">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold font-jakarta mb-4">Start Your Project Today</h2>
+                <p class="text-xl text-sky-100 mb-8 max-w-2xl mx-auto">
+                    Join our portfolio of successful projects. Get expert engineering solutions tailored to your requirements.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/contact.html#quote" class="bg-white text-sky-600 px-8 py-3 rounded-xl font-semibold hover:bg-sky-50 transition-colors">
+                        Request Project Quote
+                    </a>
+                    <a href="/services.html" class="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-sky-600 transition-colors">
+                        View Our Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <h3 class="text-xl font-bold font-jakarta mb-4">Jagannath Engineering & Equipment</h3>
+                    <p class="text-slate-300 mb-4">Quality civil, electrical, railway and maintenance works across Odisha. Licensed contractor with proven expertise.</p>
+                    <div class="space-y-2">
+                        <p class="text-sm text-slate-300">Proprietor: Moti Ranjan Parida</p>
+                        <p class="text-sm text-slate-300">Co-Partner Firm: SBM Infra Projects</p>
+                        <div class="flex flex-wrap gap-4 text-xs text-slate-400 mt-4">
+                            <span>GST: 21CNJPP2022R1ZH</span>
+                            <span>UDYAM: OD-05-0008533</span>
+                            <span>License: Class B (849MAL76)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Information</h4>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-slate-300 text-sm mb-1">Address:</p>
+                            <p class="text-white text-sm">Aradichhak, Bhadrak<br>NH-5 Soro Chhak<br>Bhadrak – 756133, Odisha</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-300 text-sm mb-1">Phone:</p>
+                            <a href="tel:+919853687795" class="text-sky-400 hover:text-sky-300 text-sm">+91 98536 87795</a>
+                        </div>
+                        <div>
+                            <p class="text-slate-300 text-sm mb-1">Email:</p>
+                            <a href="mailto:jagannathengineering2020@gmail.com" class="text-sky-400 hover:text-sky-300 text-sm break-all">jagannathengineering2020@gmail.com</a>
+                        </div>
+                        <a href="https://www.google.com/maps?q=Aradichhak,+NH-5+Soro+Chhak,+Bhadrak+756133,+Odisha" target="_blank" class="inline-block bg-sky-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-sky-700 transition-colors mt-3">
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <nav class="space-y-2">
+                        <a href="/" class="block text-slate-300 hover:text-white text-sm transition-colors">Home</a>
+                        <a href="/about.html" class="block text-slate-300 hover:text-white text-sm transition-colors">About</a>
+                        <a href="/services.html" class="block text-slate-300 hover:text-white text-sm transition-colors">Services</a>
+                        <a href="/projects.html" class="block text-slate-300 hover:text-white text-sm transition-colors">Projects</a>
+                        <a href="/certifications.html" class="block text-slate-300 hover:text-white text-sm transition-colors">Certifications</a>
+                        <a href="/contact.html" class="block text-slate-300 hover:text-white text-sm transition-colors">Contact</a>
+                    </nav>
+                    
+                    <!-- Social Links (placeholders) -->
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-slate-400 hover:text-white" aria-label="Facebook">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-slate-400 hover:text-white" aria-label="LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-700 mt-12 pt-8 text-center">
+                <p class="text-slate-400 text-sm">&copy; 2024 Jagannath Engineering & Equipment. All rights reserved.</p>
+                <p class="text-slate-500 text-xs mt-2">We don't share your data. Your privacy is important to us.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top fixed bottom-6 right-6 bg-sky-600 text-white p-3 rounded-full shadow-lg hover:bg-sky-700 transition-all z-40 no-print" aria-label="Back to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+</body>
+</html>
