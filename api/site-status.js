@@ -1,9 +1,19 @@
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
+
+// Fallback in-memory storage for when MongoDB is not available
+let fallbackStatus = {
+  status: 'online',
+  maintenanceMessage: 'We are currently performing scheduled maintenance. Please check back soon.',
+  lastUpdated: new Date()
+};
 
 async function connectToDatabase() {
+  if (!uri) {
+    throw new Error('MongoDB URI not configured');
+  }
+  const client = new MongoClient(uri);
   await client.connect();
   return client.db('jagannath_engineering');
 }
@@ -19,22 +29,37 @@ export default async function handler(req, res) {
   }
 
   try {
-    const db = await connectToDatabase();
-    const collection = db.collection('site_settings');
+    let useDatabase = true;
+    let db, collection;
+    
+    try {
+      db = await connectToDatabase();
+      collection = db.collection('site_settings');
+    } catch (dbError) {
+      console.warn('Database connection failed, using fallback storage:', dbError.message);
+      useDatabase = false;
+    }
 
     if (req.method === 'GET') {
-      // Get current site status
-      let settings = await collection.findOne({ type: 'site_status' });
+      let settings;
       
-      if (!settings) {
-        // Create default settings if none exist
-        settings = {
-          type: 'site_status',
-          status: 'online',
-          maintenanceMessage: 'We are currently performing scheduled maintenance. Please check back soon.',
-          lastUpdated: new Date()
-        };
-        await collection.insertOne(settings);
+      if (useDatabase) {
+        // Get current site status from database
+        settings = await collection.findOne({ type: 'site_status' });
+        
+        if (!settings) {
+          // Create default settings if none exist
+          settings = {
+            type: 'site_status',
+            status: 'online',
+            maintenanceMessage: 'We are currently performing scheduled maintenance. Please check back soon.',
+            lastUpdated: new Date()
+          };
+          await collection.insertOne(settings);
+        }
+      } else {
+        // Use fallback storage
+        settings = fallbackStatus;
       }
       
       return res.status(200).json({
@@ -61,11 +86,19 @@ export default async function handler(req, res) {
       if (status) updateData.status = status;
       if (maintenanceMessage) updateData.maintenanceMessage = maintenanceMessage;
 
-      await collection.updateOne(
-        { type: 'site_status' },
-        { $set: updateData },
-        { upsert: true }
-      );
+      if (useDatabase) {
+        // Update in database
+        await collection.updateOne(
+          { type: 'site_status' },
+          { $set: updateData },
+          { upsert: true }
+        );
+      } else {
+        // Update fallback storage
+        if (status) fallbackStatus.status = status;
+        if (maintenanceMessage) fallbackStatus.maintenanceMessage = maintenanceMessage;
+        fallbackStatus.lastUpdated = new Date();
+      }
 
       return res.status(200).json({ 
         success: true, 
