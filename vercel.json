@@ -44,6 +44,10 @@
     {
       "src": "public/**",
       "use": "@vercel/static"
+    },
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -55,6 +59,7 @@
     { "src": "/contact", "dest": "/contact.html" },
     { "src": "/certifications", "dest": "/certifications.html" },
     { "src": "/admin", "dest": "/admin.html" },
+    { "src": "/admin-backend", "dest": "/admin-backend.html" },
     { "src": "/maintenance", "dest": "/maintenance.html" }
   ]
 }
