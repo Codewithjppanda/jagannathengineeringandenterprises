@@ -26,6 +26,14 @@
       "use": "@vercel/static"
     },
     {
+      "src": "admin.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "maintenance.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "css/**",
       "use": "@vercel/static"
     },
@@ -45,6 +53,8 @@
     { "src": "/services", "dest": "/services.html" },
     { "src": "/projects", "dest": "/projects.html" },
     { "src": "/contact", "dest": "/contact.html" },
-    { "src": "/certifications", "dest": "/certifications.html" }
+    { "src": "/certifications", "dest": "/certifications.html" },
+    { "src": "/admin", "dest": "/admin.html" },
+    { "src": "/maintenance", "dest": "/maintenance.html" }
   ]
 }
