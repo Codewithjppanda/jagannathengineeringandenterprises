@@ -72,8 +72,22 @@
     </div>
 
     <script>
-        // Load custom maintenance message if available
-        document.addEventListener('DOMContentLoaded', function() {
+        // Prefer fetching the latest maintenance message from API, fallback to localStorage
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const res = await fetch('/api/global-status');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.maintenanceMessage) {
+                        document.getElementById('maintenanceMessage').textContent = data.maintenanceMessage;
+                        // keep fallback in sync
+                        localStorage.setItem('maintenanceMessage', data.maintenanceMessage);
+                    }
+                }
+            } catch (e) {
+                // ignore and fallback to localStorage
+            }
+
             const customMessage = localStorage.getItem('maintenanceMessage');
             if (customMessage) {
                 document.getElementById('maintenanceMessage').textContent = customMessage;

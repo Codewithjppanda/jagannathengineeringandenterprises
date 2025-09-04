@@ -161,15 +161,34 @@
                 message: '',
                 messageType: 'success',
 
-                init() {
+                async init() {
                     // Check if already authenticated
                     if (localStorage.getItem('adminAuth') === 'true') {
                         this.isAuthenticated = true;
                     }
-                    
-                    // Load current site status
-                    this.loadSiteStatus();
-                    this.loadMaintenanceMessage();
+
+                    // Load current site status from API
+                    await this.fetchCurrentStatus();
+                },
+
+                async fetchCurrentStatus() {
+                    try {
+                        const res = await fetch('/api/global-status');
+                        if (!res.ok) throw new Error('Failed to load status');
+                        const data = await res.json();
+                        this.siteStatus = data.status || 'online';
+                        this.maintenanceMessage = data.maintenanceMessage || this.maintenanceMessage;
+                        // Fallback storage for client-side checks if API is unreachable later
+                        localStorage.setItem('siteStatus', this.siteStatus);
+                        localStorage.setItem('maintenanceMessage', this.maintenanceMessage);
+                    } catch (e) {
+                        // Fallback to localStorage if API fails
+                        const status = localStorage.getItem('siteStatus');
+                        const message = localStorage.getItem('maintenanceMessage');
+                        if (status) this.siteStatus = status;
+                        if (message) this.maintenanceMessage = message;
+                        this.showErrorMessage('Could not fetch current status from server. Using last known values.');
+                    }
                 },
 
                 login() {
@@ -189,40 +208,80 @@
                     localStorage.removeItem('adminAuth');
                 },
 
-                startWebsite() {
-                    this.siteStatus = 'online';
-                    localStorage.setItem('siteStatus', 'online');
-                    this.showSuccessMessage('Website is now online!');
-                },
-
-                stopWebsite() {
-                    this.siteStatus = 'maintenance';
-                    localStorage.setItem('siteStatus', 'maintenance');
-                    this.showSuccessMessage('Website is now in maintenance mode!');
-                },
-
-                updateMaintenanceMessage() {
-                    localStorage.setItem('maintenanceMessage', this.maintenanceMessage);
-                    this.showSuccessMessage('Maintenance message updated!');
-                },
-
-                loadSiteStatus() {
-                    const status = localStorage.getItem('siteStatus');
-                    if (status) {
-                        this.siteStatus = status;
+                async startWebsite() {
+                    try {
+                        const res = await fetch('/api/global-status', {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                status: 'online',
+                                password: 'Jyotiprakashadmin123'
+                            })
+                        });
+                        if (!res.ok) throw new Error('Failed to update status');
+                        const { data } = await res.json();
+                        this.siteStatus = data.status;
+                        // Keep local storage in sync for client fallback
+                        localStorage.setItem('siteStatus', this.siteStatus);
+                        this.showSuccessMessage('Website is now online!');
+                    } catch (e) {
+                        this.showErrorMessage('Failed to set website online.');
                     }
                 },
 
-                loadMaintenanceMessage() {
-                    const message = localStorage.getItem('maintenanceMessage');
-                    if (message) {
-                        this.maintenanceMessage = message;
+                async stopWebsite() {
+                    try {
+                        const res = await fetch('/api/global-status', {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                status: 'maintenance',
+                                password: 'Jyotiprakashadmin123'
+                            })
+                        });
+                        if (!res.ok) throw new Error('Failed to update status');
+                        const { data } = await res.json();
+                        this.siteStatus = data.status;
+                        // Keep local storage in sync for client fallback
+                        localStorage.setItem('siteStatus', this.siteStatus);
+                        this.showSuccessMessage('Website is now in maintenance mode!');
+                    } catch (e) {
+                        this.showErrorMessage('Failed to enable maintenance mode.');
+                    }
+                },
+
+                async updateMaintenanceMessage() {
+                    try {
+                        const res = await fetch('/api/global-status', {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                maintenanceMessage: this.maintenanceMessage,
+                                password: 'Jyotiprakashadmin123'
+                            })
+                        });
+                        if (!res.ok) throw new Error('Failed to update message');
+                        const { data } = await res.json();
+                        this.maintenanceMessage = data.maintenanceMessage;
+                        localStorage.setItem('maintenanceMessage', this.maintenanceMessage);
+                        this.showSuccessMessage('Maintenance message updated!');
+                    } catch (e) {
+                        this.showErrorMessage('Failed to update maintenance message.');
                     }
                 },
 
                 showSuccessMessage(msg) {
                     this.message = msg;
                     this.messageType = 'success';
+                    this.showMessage = true;
+                    setTimeout(() => {
+                        this.showMessage = false;
+                    }, 3000);
+                },
+
+                showErrorMessage(msg) {
+                    this.message = msg;
+                    this.messageType = 'error';
                     this.showMessage = true;
                     setTimeout(() => {
                         this.showMessage = false;
