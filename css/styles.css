@@ -1,5 +1,10 @@
 /* Custom styles for Jagannath Engineering & Equipment */
 
+/* Alpine.js x-cloak to prevent FOUC */
+[x-cloak] { 
+    display: none !important; 
+}
+
 /* Smooth scrolling is handled by Lenis */
 html {
   scroll-behavior: auto;
@@ -13,6 +18,29 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  padding-top: 64px; /* Add padding to account for fixed header */
+}
+
+/* Mobile menu styles */
+.mobile-menu-button {
+  display: block;
+  z-index: 50;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 64px; /* Height of the header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure content doesn't shift when mobile menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
 }
 
 /* Custom animations for GSAP */

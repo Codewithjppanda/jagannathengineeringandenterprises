@@ -27,31 +27,76 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="font-inter bg-white text-slate-900" x-data="{ mobileMenuOpen: false }">
-    <!-- Header (same as other pages) -->
+    <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 border-b border-slate-200">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="./index.html" class="flex items-center space-x-2 text-xl font-bold text-slate-900 hover:text-sky-600 transition-colors">
-                        <img src="/public/images/logo.jpg" alt="Jagannath Engineering & Equipment Logo" class="h-10 w-auto">
-                        <span>Jagannath Engineering & Equipment</span>
+                <div class="flex-shrink-0 min-w-0 flex-1 mr-4">
+                    <a href="./index.html" class="flex items-center space-x-2 text-slate-900 hover:text-sky-600 transition-colors">
+                        <img src="/public/images/logo.jpg" alt="Jagannath Engineering & Equipment Logo" class="h-8 sm:h-10 w-auto flex-shrink-0">
+                        <span class="hidden sm:inline text-lg sm:text-xl font-bold truncate">Jagannath Engineering & Equipment</span>
+                        <span class="sm:hidden text-sm font-bold">JEE</span>
                     </a>
                 </div>
+                
+                <!-- Desktop Navigation -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="/" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <a href="/about.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="/services.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
-                        <a href="/projects.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
-                        <a href="/certifications.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors" aria-current="page">Certifications</a>
-                        <a href="/contact.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
-                        <a href="/contact.html#quote" class="bg-sky-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-sky-700 transition-colors ml-4">Get Quote</a>
+                        <a href="./index.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="./about.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                        <a href="./services.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Services</a>
+                        <a href="./projects.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="./certifications.html" class="bg-sky-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-sky-700 transition-colors">
+                            Certifications
+                        </a>
+                        <a href="./contact.html" class="text-slate-700 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
                     </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click.stop="mobileMenuOpen = !mobileMenuOpen; document.body.classList.toggle('mobile-menu-open', mobileMenuOpen)" 
+                            class="mobile-menu-button text-slate-700 hover:text-sky-600 p-2" 
+                            :aria-expanded="mobileMenuOpen"
+                            aria-label="Toggle mobile menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div x-show="mobileMenuOpen" 
+                 x-cloak
+                 @click.away="mobileMenuOpen = false; document.body.classList.remove('mobile-menu-open')"
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 transform -translate-y-1"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 transform translate-y-0"
+                 x-transition:leave-end="opacity-0 transform -translate-y-1"
+                 class="mobile-menu md:hidden border-t border-slate-200 bg-white fixed left-0 right-0 z-40" 
+                 style="display: none;">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg">
+                    <a href="./index.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Home</a>
+                    <a href="./about.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">About</a>
+                    <a href="./services.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Services</a>
+                    <a href="./projects.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Projects</a>
+                    <a href="./certifications.html" class="block bg-sky-600 text-white px-3 py-3 rounded-lg text-base font-medium hover:bg-sky-700 transition-colors mt-4">
+                        Certifications
+                    </a>
+                    <a href="./contact.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Contact</a>
                 </div>
             </div>
         </nav>

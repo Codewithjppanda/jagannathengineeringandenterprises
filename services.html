@@ -21,6 +21,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -49,10 +52,11 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="./index.html" class="flex items-center space-x-2 text-xl font-bold text-slate-900 hover:text-sky-600 transition-colors">
-                        <img src="/public/images/logo.jpg" alt="Jagannath Engineering & Equipment Logo" class="h-10 w-auto">
-                        <span>Jagannath Engineering & Equipment</span>
+                <div class="flex-shrink-0 min-w-0 flex-1 mr-4">
+                    <a href="./index.html" class="flex items-center space-x-2 text-slate-900 hover:text-sky-600 transition-colors">
+                        <img src="/public/images/logo.jpg" alt="Jagannath Engineering & Equipment Logo" class="h-8 sm:h-10 w-auto flex-shrink-0">
+                        <span class="hidden sm:inline text-lg sm:text-xl font-bold truncate">Jagannath Engineering & Equipment</span>
+                        <span class="sm:hidden text-sm font-bold">JEE</span>
                     </a>
                 </div>
                 
@@ -73,8 +77,8 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" 
-                            class="text-slate-700 hover:text-sky-600 p-2" 
+                    <button @click.stop="mobileMenuOpen = !mobileMenuOpen; document.body.classList.toggle('mobile-menu-open', mobileMenuOpen)" 
+                            class="mobile-menu-button text-slate-700 hover:text-sky-600 p-2" 
                             :aria-expanded="mobileMenuOpen"
                             aria-label="Toggle mobile menu">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -87,14 +91,17 @@
             
             <!-- Mobile Navigation -->
             <div x-show="mobileMenuOpen" 
+                 x-cloak
+                 @click.away="mobileMenuOpen = false; document.body.classList.remove('mobile-menu-open')"
                  x-transition:enter="transition ease-out duration-200"
                  x-transition:enter-start="opacity-0 transform -translate-y-1"
                  x-transition:enter-end="opacity-100 transform translate-y-0"
                  x-transition:leave="transition ease-in duration-150"
                  x-transition:leave-start="opacity-100 transform translate-y-0"
                  x-transition:leave-end="opacity-0 transform -translate-y-1"
-                 class="md:hidden border-t border-slate-200 bg-white">
-                <div class="px-2 pt-2 pb-3 space-y-1">
+                 class="mobile-menu md:hidden border-t border-slate-200 bg-white fixed left-0 right-0 z-40" 
+                 style="display: none;">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg">
                     <a href="/" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Home</a>
                     <a href="/about.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">About</a>
                     <a href="/services.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Services</a>
@@ -153,7 +160,7 @@
                         <div class="p-6">
                             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                                 </svg>
                             </div>
                             <h3 class="font-semibold text-slate-900 mb-2">Expert Team</h3>
