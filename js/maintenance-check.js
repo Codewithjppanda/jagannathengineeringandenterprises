@@ -9,7 +9,7 @@ async function checkMaintenanceStatus() {
     }
 
     try {
-        const response = await fetch('/api/simple-status');
+        const response = await fetch('/api/global-status');
         const data = await response.json();
         
         // If site is in maintenance mode, redirect to maintenance page
