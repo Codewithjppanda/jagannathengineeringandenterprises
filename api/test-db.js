@@ -23,10 +23,35 @@ export default async function handler(req, res) {
     
     const db = client.db('jagannath_engineering');
     
-    // Test database operations
-    const testCollection = db.collection('connection_test');
+    // Create initial collections with sample data
+    const siteStatusCollection = db.collection('site_status');
+    const projectsCollection = db.collection('projects');
+    const contactsCollection = db.collection('contacts');
     
-    // Insert a test document
+    // Initialize site status if it doesn't exist
+    const existingStatus = await siteStatusCollection.findOne({});
+    if (!existingStatus) {
+      await siteStatusCollection.insertOne({
+        maintenanceMode: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+    }
+    
+    // Add sample project if collection is empty
+    const projectCount = await projectsCollection.countDocuments();
+    if (projectCount === 0) {
+      await projectsCollection.insertOne({
+        title: "Sample Steel Project",
+        description: "Initial sample project for Jagannath Engineering",
+        category: "steel_fabrication",
+        status: "completed",
+        createdAt: new Date()
+      });
+    }
+    
+    // Test document for connection verification
+    const testCollection = db.collection('connection_test');
     const testDoc = {
       test: true,
       timestamp: new Date(),
@@ -34,16 +59,21 @@ export default async function handler(req, res) {
     };
     
     const insertResult = await testCollection.insertOne(testDoc);
-    
-    // Read the test document back
     const foundDoc = await testCollection.findOne({ _id: insertResult.insertedId });
-    
-    // Clean up - delete the test document
     await testCollection.deleteOne({ _id: insertResult.insertedId });
     
     // Get database stats
     const collections = await db.listCollections().toArray();
     const stats = await db.stats();
+    
+    // List all databases
+    const adminDb = client.db().admin();
+    const databases = await adminDb.listDatabases();
+    
+    // Get collections from the specified database
+    const dbName = new URL(uri).pathname.substring(1) || 'test';
+    const db2 = client.db(dbName);
+    const collections2 = await db2.listCollections().toArray();
     
     await client.close();
     
@@ -62,6 +92,8 @@ export default async function handler(req, res) {
         dataSize: stats.dataSize,
         storageSize: stats.storageSize
       },
+      databases: databases.databases.map(db => db.name),
+      collections2: collections2.map(col => col.name),
       timestamp: new Date().toISOString()
     });
     
