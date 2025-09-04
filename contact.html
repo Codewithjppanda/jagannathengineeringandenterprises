@@ -39,7 +39,7 @@
                 <div class="flex-shrink-0 min-w-0 flex-1 mr-4">
                     <a href="./index.html" class="flex items-center space-x-2 text-slate-900 hover:text-sky-600 transition-colors">
                         <img src="/public/images/logo.jpg" alt="Jagannath Engineering & Equipment Logo" class="h-8 sm:h-10 w-auto flex-shrink-0">
-                        <span class="hidden sm:inline text-lg sm:text-xl font-bold truncate">Jagannath Engineering & Equipment</span>
+                        <span class="hidden sm:inline text-lg sm:text-xl font-bold truncate">Jagannath Engineering & Infrastructure</span>
                         <span class="sm:hidden text-sm font-bold">JEE</span>
                     </a>
                 </div>
@@ -60,31 +60,25 @@
             
             <!-- Mobile menu button -->
             <div class="md:hidden">
-                <button @click.stop="mobileMenuOpen = !mobileMenuOpen; document.body.classList.toggle('mobile-menu-open', mobileMenuOpen)" 
+                <button @click.prevent="mobileMenuOpen = !mobileMenuOpen" 
                         class="mobile-menu-button text-slate-700 hover:text-sky-600 p-2" 
                         :aria-expanded="mobileMenuOpen"
-                        aria-label="Toggle mobile menu">
+                        aria-label="Toggle mobile menu"
+                        type="button">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
-        </nav>
+        </div>
         
         <!-- Mobile Navigation -->
         <div x-show="mobileMenuOpen" 
              x-cloak
-             @click.away="mobileMenuOpen = false; document.body.classList.remove('mobile-menu-open')"
-             x-transition:enter="transition ease-out duration-200"
-             x-transition:enter-start="opacity-0 transform -translate-y-1"
-             x-transition:enter-end="opacity-100 transform translate-y-0"
-             x-transition:leave="transition ease-in duration-150"
-             x-transition:leave-start="opacity-100 transform translate-y-0"
-             x-transition:leave-end="opacity-0 transform -translate-y-1"
-             class="mobile-menu md:hidden border-t border-slate-200 bg-white fixed left-0 right-0 z-40" 
-             style="display: none;">
-            <div class="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg">
+             @click.away="mobileMenuOpen = false"
+             class="md:hidden border-t border-slate-200 bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="./index.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Home</a>
                 <a href="./about.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">About</a>
                 <a href="./services.html" class="block text-slate-700 hover:text-sky-600 px-3 py-3 rounded-md text-base font-medium border-b border-slate-100">Services</a>
