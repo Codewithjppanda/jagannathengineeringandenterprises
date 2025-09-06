@@ -87,9 +87,9 @@
                 </div>
                 
                 <!-- Mobile menu button -->
-                <div class="md:hidden">
+                <div class="md:hidden flex-shrink-0">
                     <button @click.prevent="mobileMenuOpen = !mobileMenuOpen" 
-                            class="mobile-menu-button text-slate-700 hover:text-sky-600 p-2" 
+                            class="mobile-menu-button text-slate-700 hover:text-sky-600 p-2 relative z-50 bg-white rounded-md border border-slate-200" 
                             :aria-expanded="mobileMenuOpen"
                             aria-label="Toggle mobile menu"
                             type="button">
